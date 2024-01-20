@@ -21,10 +21,10 @@ const second = (val) => {
  */
 
 // Refactor the following code...
-export const handlePromise = first();
-const secondPromise = handlePromise.then((val) => val);
-const final = secondPromise.then((res) => second(res));
-final.then((val) => {
+export const handlePromise = first()
+.then((val) => val)
+.then((res) => second(res))
+.then((val) => {
   console.log(val);
   return val;
 });
@@ -33,3 +33,34 @@ final.then((val) => {
 // Once you're finished run the test with "npm run test-4"
 // If the test has all tests passed, switch to the next exercise file
 // If any of the tests fails, refactor the code and run the test command after you've fixed the function
+// var originalPromise = Parse.User.logIn("user", "pass");
+
+// var findPromise = originalPromise.then(function (query) {
+//   // At this point, you have logged in.
+
+//   // query.find() returns another promise, which will become `findPromise`
+//   return query.find();
+// });
+
+// var savePromise = findPromise.then(function (results) {
+//   // At this point, the query finding is done.
+
+//   // The promise returned by `save` will become `savePromise`
+//   return results[0].save({ key: value });
+// });
+
+// savePromise.then(function (result) {
+//   // the object was saved
+// });
+// ```
+
+// which can then be simplified to:
+
+// ```js
+// Parse.User.logIn("user", "pass")
+//   .then((query) => query.find())
+//   .then((results) => results[0].save({ key: value }))
+//   .then(function (result) {
+//     // the object was saved
+//   });
+// ```
