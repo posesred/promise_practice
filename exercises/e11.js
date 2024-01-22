@@ -1,3 +1,4 @@
+import fetch from "node-fetch";
 /**
  * GET DATABASE LOGINS LIST
  * Make sure to read the /exercise-info/11-fetching-in-Node-JS.md file before you start
@@ -26,9 +27,10 @@ export const usersUrl = 'http://localhost:3000/users/';
  * Example: const getLoginList = (data) => {<Your code>}
 */
 
-const getLoginList = () => {
+const getLoginList = (data) => {
   // Your code goes here...
-
+  const login = data.map( ( {login}) => login)
+  return login
 }
 
 /**
@@ -39,7 +41,7 @@ const getLoginList = () => {
 */
 
 // Your code goes here ...
-const getData;
+const getData = () =>{ return fetch(usersUrl)};
 
 /**
  * @task 
@@ -53,7 +55,13 @@ const getData;
 */
 
 // Your code goes here ...
-export const result = getData;
+export const result = getData().then( (resolved)=> {
+  return resolved.json()
+}).then( (parsedData) => {
+    const logins = getLoginList(parsedData);
+    console.log(logins);
+    return logins;
+  });
 
 
 // === TEST YOURSELF ===
