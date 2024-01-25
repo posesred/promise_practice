@@ -17,13 +17,9 @@
 
 export const getPromise = (bool) => {
   // Your code goes here...
-  return new Promise((res,rej)=>{
-    if(bool){
-      res('The PROMISE was RESOLVED')
-    }else{
-      rej('The PROMISE was REJECTED')
-    }
-  })
+  return new Promise((res, rej) => {
+    bool ? res("The PROMISE was RESOLVED") : rej("The PROMISE was REJECTED");
+  });
 };
 
 /**
@@ -37,14 +33,10 @@ export const getPromise = (bool) => {
 
 export const handlePromise = (promise) => {
   // Your code goes here...
-  const onFulfilled = ((data)=>{
-    return data
-  });
-  const onRejected = ( ()=>{
-    return "Uh Oh";
-  })
-  return promise.then(onFulfilled,onRejected);
-  
+  return promise.then(
+    (data) => data,
+    () => "Uh Oh"
+  );
 };
 
 // === TEST YOURSELF ===

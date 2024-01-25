@@ -55,13 +55,11 @@ export function onReject(error) {
 
 export const handlePromise = (promise) => {
   // Your code goes here...
-  return promise.then((value)=>value).catch( (message) => {
-    if(message && message.message){
-      onReject(message)
-    }else{
-      return message
-    }
-  })
+  return promise
+    .then((value) => value)
+    .catch((message) => {
+      return message.message ? onReject(message) : message;
+    });
 };
 
 // === TEST YOURSELF ===

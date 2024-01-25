@@ -16,11 +16,11 @@
  */
 export const getPromise = (number) => {
   // Your code goes here...
-  if(Number.isInteger(number)){
-    return new Promise( (res)=>{
+  if (Number.isInteger(number)) {
+    return new Promise((res) => {
       res(number);
-    })
-  }else{
+    });
+  } else {
     return 0;
   }
 };
@@ -40,9 +40,9 @@ export const updateSumValue = () => {
   // Your code goes here...
   let sum = 2;
   getPromise(120).then((data) => {
-    sum+=data
+    sum += data;
   });
-  sum+=8;
+  sum += 8;
   return sum;
 };
 

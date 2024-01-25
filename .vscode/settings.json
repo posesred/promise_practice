@@ -1,3 +1,9 @@
 {
-  "cSpell.words": ["stringifier", "typicode", "yoyoyo"]
+  "cSpell.words": [
+    "stringifier",
+    "typicode",
+    "yoyoyo"
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
 }

@@ -9,14 +9,16 @@ export const getFirstPromiseOrFail = (promises) => {
 
 export const getQuantityOfRejectedPromises = (promises) => {
   //*  write code to pass test ⬇ ️
-  return Promise.allSettled(promises)
-  .then( (result) => result.filter( (result) => result.status === 'rejected').length);
+  return Promise.allSettled(promises).then(
+    (result) => result.filter((result) => result.status === "rejected").length
+  );
 };
 
 export const getQuantityOfFulfilledPromises = (promises) => {
   //*  write code to pass test ⬇ ️
-  return Promise.allSettled(promises)
-  .then( (result) => result.filter( (result) => result.status === 'fulfilled').length);
+  return Promise.allSettled(promises).then(
+    (result) => result.filter((result) => result.status === "fulfilled").length
+  );
 };
 
 //!  ⬇ ⬇ ⬇ ⬇ Don't Edit This Array ⬇ ⬇ ⬇ ⬇
@@ -44,16 +46,11 @@ export const fetchCharacterById = (id) => {
     }, 1000);
   });
 };
-//! ⬆  ⬆  ⬆  ⬆ do not edit this function   ⬆  ⬆  ⬆  ⬆ 
+//! ⬆  ⬆  ⬆  ⬆ do not edit this function   ⬆  ⬆  ⬆  ⬆
 
 export const fetchAllCharactersByIds = async (ids) => {
-  const promises = ids.map( (id)=> fetchCharacterById(id));
-  const result = await Promise.allSettled(promises);
-
-  if(result.some( (value) => value.status === 'rejected' ) ){
-    return []
-  }
-
-  const validResults = result.map( (result) => result.value);
-  return validResults
+  const promises = ids.map((id) => fetchCharacterById(id));
+  return await Promise.all(promises)
+    .then((data) => data)
+    .catch(() => []);
 };

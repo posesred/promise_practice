@@ -6,22 +6,19 @@
 export const createOneSecondPromise = () => {
   // Return a Promise that resolves to the string 'The PROMISE was RESOLVED' in 1 second
   // make sure to use the promise constructor described in The Markdown For this exercise
-  const promise = new Promise((res) => {
+  return new Promise((res) => {
     setTimeout(() => {
       res("The PROMISE was RESOLVED");
     }, 1000);
   });
-  return promise;
 };
 
 export const logMessageAfterOneSecond = (message) => {
   // use the 'createOneSecondPromise' function, and a `onFulfilled` callback with a `.then` method
   // to log the `message` parameter we pass in after one second
-  const onFulfilled = (message) =>
-    setTimeout(() => {
-      console.log(message);
-    }, 1000);
-  createOneSecondPromise().then(onFulfilled(message));
+  const onFulfilled = (message) => console.log(message);
+
+  createOneSecondPromise().then(() => onFulfilled(message));
 };
 
 export const logMessageAfterOneSecondAwait = async (message) => {
